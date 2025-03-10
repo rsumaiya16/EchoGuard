@@ -1,52 +1,89 @@
 // src/screens/LoginScreen.jsx
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer.jsx';
+
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contact: '',
+    password: '',
+  });
+
+  const navigate = useNavigate();  // Using useNavigate to redirect after successful login
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here (e.g., validation or redirect to home page)
-    console.log('Logged in with:', email, password);
+
+    // Add your validation and API call here for authentication
+
+    // If login is successful, redirect to Home page
+    navigate('/home');
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-center text-2xl font-semibold mb-6">Login to EchoGuard</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-200">
+      <div className="w-96 p-6 bg-white rounded shadow-md">
+        <h2 className="text-2xl text-center mb-4">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700">Email</label>
+            <label htmlFor="name" className="block">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-2 mt-1 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block">Email</label>
             <input
               type="email"
-              id="email"
-              className="w-full px-4 py-2 mt-2 border rounded-md"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full p-2 mt-1 border rounded"
             />
           </div>
-          <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700">Password</label>
+          <div className="mb-4">
+            <label htmlFor="contact" className="block">Contact</label>
+            <input
+              type="text"
+              name="contact"
+              value={formData.contact}
+              onChange={handleChange}
+              className="w-full p-2 mt-1 border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block">Password</label>
             <input
               type="password"
-              id="password"
-              className="w-full px-4 py-2 mt-2 border rounded-md"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full p-2 mt-1 border rounded"
             />
           </div>
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-600 text-white rounded-md"
-          >
-            Login
-          </button>
+          <div className="mb-4">
+            <button type="submit" className="w-full py-2 bg-blue-500 text-white rounded">Login</button>
+          </div>
         </form>
       </div>
+      <footer className="absolute bottom-0 w-full text-center p-2 bg-blue-600 text-white">
+        <p>EchoGuard - Your safety is our priority</p>
+      </footer>
     </div>
   );
 };

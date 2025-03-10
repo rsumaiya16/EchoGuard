@@ -1,22 +1,21 @@
 // src/components/Header.jsx
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Header = () => {
   return (
-    <header className="bg-blue-600 text-white py-4">
+    <header className="bg-blue-500 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-semibold">EchoGuard</div>
+        <h1 className="text-3xl font-bold">EchoGuard</h1> {/* Brand name */}
         <nav>
-          <ul className="flex space-x-6">
-            <li>
-              <a href="/" className="hover:text-gray-200">Home</a>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-gray-200">About</a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-gray-200">Contact</a>
+          <ul className="flex space-x-4">
+
+        
+    
+           <li>
+              <Link to="/contact">Contact</Link> {/* Link to Contact Screen */}
             </li>
           </ul>
         </nav>
@@ -26,4 +25,3 @@ const Header = () => {
 };
 
 export default Header;
-

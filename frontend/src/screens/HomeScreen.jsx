@@ -1,27 +1,35 @@
 // src/screens/HomeScreen.jsx
 
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const HomeScreen = () => {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
+  const handleAlert = () => {
+    // Trigger emergency alert (e.g., display a message, send a notification, etc.)
+    alert("Emergency alert triggered!");
+  };
 
-      <main className="flex-grow bg-gray-100">
-        <div className="container mx-auto py-8">
-          <h1 className="text-3xl font-bold text-center text-blue-600">Welcome to EchoGuard</h1>
-          <p className="mt-4 text-center text-gray-600">Your safety is our priority. Stay protected with EchoGuard.</p>
-          <div className="mt-8 flex justify-center">
-            <button className="bg-blue-600 text-white py-2 px-4 rounded-full">
-              Trigger Emergency Alert
-            </button>
-          </div>
-        </div>
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      {/* Header */}
+      <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <div className="text-xl">EchoGuard</div>
+        <div className="text-lg">Hello, User</div> {/* You can dynamically change "User" */}
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-grow flex justify-center items-center bg-white">
+        <button
+          onClick={handleAlert}
+          className="py-3 px-6 bg-red-600 text-white text-xl rounded-full"
+        >
+          Trigger Emergency Alert
+        </button>
       </main>
 
-      <Footer />
+      {/* Footer */}
+      <footer className="bg-blue-600 text-white p-4 text-center">
+        <p>EchoGuard - Your safety is our priority</p>
+      </footer>
     </div>
   );
 };
