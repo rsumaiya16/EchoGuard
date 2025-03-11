@@ -25,12 +25,14 @@ const LoginScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Add your validation and API call here for authentication
+    if (!formData.name || !formData.email || !formData.contact || !formData.password) {
+      alert("Please fill out all fields!");
+      return;
+    }
 
-    // If login is successful, redirect to Home page
-    navigate('/home');
+    // Redirect to HomeScreen and pass user name as state
+    navigate('/home', { state: { name: formData.name } });
   };
-
   return (
     <div className="flex justify-center items-center h-screen bg-gray-200">
       <div className="w-96 p-6 bg-white rounded shadow-md">

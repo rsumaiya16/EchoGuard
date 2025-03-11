@@ -13,6 +13,7 @@ const App = () => {
       <div className="flex flex-col min-h-screen">  
       {/* ensures the height of this div takes up at least the entire height of the screen. */}
         {/* Routes */}
+        
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<LoginScreen />} />
