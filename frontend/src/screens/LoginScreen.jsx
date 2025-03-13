@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer.jsx';
-import bgVideo from '../assets/loginbg.mp4';  // Add your video file in the assets folder
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
+import bgVideo from "../assets/loginbg.mp4"; // Add your video file in the assets folder
 
 const LoginScreen = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    contact: '',
-    password: '',
+    name: "",
+    email: "",
+    contact: "",
+    password: "",
   });
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -26,18 +26,15 @@ const LoginScreen = () => {
       alert("Please fill out all fields!");
       return;
     }
-    navigate('/home', { state: { name: formData.name } });
+
+    // ✅ Pass user name via navigate state
+    navigate("/home", { state: { name: formData.name } });
   };
 
   return (
     <div className="relative w-full h-screen flex items-center justify-center">
       {/* Background Video */}
-      <video 
-        autoPlay 
-        loop 
-        muted 
-        className="absolute top-0 left-0 w-full h-full object-cover"
-      >
+      <video autoPlay loop muted className="absolute top-0 left-0 w-full h-full object-cover">
         <source src={bgVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -46,8 +43,8 @@ const LoginScreen = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
 
       {/* Login Form */}
-      <div className="relative w-96 p-8  bg-opacity-90 rounded-lg shadow-lg z-10">
-        <h2 className="text-3xl font-semibold text-center text-white ">Login</h2>
+      <div className="relative w-96 p-8 bg-opacity-90 rounded-lg shadow-lg z-10">
+        <h2 className="text-3xl font-semibold text-center text-white">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="name" className="block font-semibold mb-2 text-white">Name</label>
@@ -57,6 +54,7 @@ const LoginScreen = () => {
               value={formData.name}
               onChange={handleChange}
               className="w-full p-3 mt-1 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              required
             />
           </div>
           <div className="mb-4">
@@ -67,6 +65,7 @@ const LoginScreen = () => {
               value={formData.email}
               onChange={handleChange}
               className="w-full p-3 mt-1 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              required
             />
           </div>
           <div className="mb-4">
@@ -77,6 +76,7 @@ const LoginScreen = () => {
               value={formData.contact}
               onChange={handleChange}
               className="w-full p-3 mt-1 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              required
             />
           </div>
           <div className="mb-4">
@@ -87,6 +87,7 @@ const LoginScreen = () => {
               value={formData.password}
               onChange={handleChange}
               className="w-full p-3 mt-1 border rounded focus:ring-2 focus:ring-blue-500 outline-none"
+              required
             />
           </div>
           <div className="mb-4">

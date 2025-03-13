@@ -1,20 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-
-// Import Components & Screens
-import Header from "./components/Header"; // Import Header
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Header from "./components/Header";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 
-const Layout = ({ children }) => {
-  const location = useLocation(); // Get current route
+const AppLayout = ({ children }) => {
+  const location = useLocation();
+  const userName = location.state?.name || "User"; // ✅ Extract name from state
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Show Header ONLY on Home Page */}
-      {location.pathname === "/home" && <Header />}
-      
-      {/* Main Content */}
+      {/* ✅ Pass userName to Header */}
+      {location.pathname !== "/" && <Header userName={userName} />}
       <main className="flex-grow">{children}</main>
     </div>
   );
@@ -23,12 +20,12 @@ const Layout = ({ children }) => {
 const App = () => {
   return (
     <Router>
-      <Layout>
+      <AppLayout>
         <Routes>
           <Route path="/" element={<LoginScreen />} />
           <Route path="/home" element={<HomeScreen />} />
         </Routes>
-      </Layout>
+      </AppLayout>
     </Router>
   );
 };

@@ -79,7 +79,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-pink-100">
+    <div className="min-h-screen flex flex-col bg-black items-center justify-center  pt-40 ">
      
      
 
@@ -91,20 +91,20 @@ const HomeScreen = () => {
       <div className="flex justify-center space-x-4 mt-4">
         <button
           onClick={startListening}
-          className="py-2 px-4 bg-pink-500/50 text-white rounded-xl"
+          className="py-2 px-4 bg-pink-500/50 text-white rounded-xl hover:bg-violet-500 transition duration-300  "
         >
           🎙 Start Listening
         </button>
         <button
           onClick={stopListening}
-          className="py-2 px-4 bg-gray-500 text-white rounded-xl"
+          className="py-2 px-4 bg-gray-500 text-white rounded-xl hover:bg-gray-500/50 transition duration-300"
         >
           ⏹ Stop Listening
         </button>
       </div>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col justify-center items-center bg-pink-100">
+      <main className="flex-grow flex flex-col justify-center items-center bg-black-100 ">
         {!showMap ? (
           <button
             onClick={() => {
