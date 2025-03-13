@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
-import "leaflet/dist/leaflet.css"; // ✅ Import Leaflet CSS
+import "leaflet/dist/leaflet.css";
 
-const center = [51.505, -0.09]; // Default center location (London, UK)
+// Default Center: Fallback Location (London)
+const defaultCenter = [51.505, -0.09];
 
 const LocationMarker = () => {
   const [position, setPosition] = useState(null);
@@ -18,9 +19,10 @@ const LocationMarker = () => {
       (location) => {
         const { latitude, longitude } = location.coords;
         setPosition([latitude, longitude]);
-        map.setView([latitude, longitude], 13); // Move map to user's location
+        map.setView([latitude, longitude], 13); // Move the map to user's location
       },
-      () => {
+      (error) => {
+        console.error("Location Error:", error);
         alert("Unable to retrieve your location.");
       }
     );
@@ -31,14 +33,16 @@ const LocationMarker = () => {
 
 const LocationMap = () => {
   return (
-    <MapContainer 
-      center={center} 
-      zoom={13} 
-      className="w-full h-[400px] rounded-lg shadow-md" // ✅ Set a fixed height for Tailwind
-    >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <LocationMarker />
-    </MapContainer>
+    <div className="w-full flex justify-center items-center">
+      <MapContainer
+        center={defaultCenter}
+        zoom={13}
+        className="h-[400px] w-3/4 rounded-lg shadow-md"
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <LocationMarker />
+      </MapContainer>
+    </div>
   );
 };
 
