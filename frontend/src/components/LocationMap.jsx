@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css"; // ✅ Import Leaflet CSS
 
-const center = [51.505, -0.09]; // default location (London, UK)
+const center = [51.505, -0.09]; // Default center location (London, UK)
 
 const LocationMarker = () => {
   const [position, setPosition] = useState(null);
@@ -17,7 +18,7 @@ const LocationMarker = () => {
       (location) => {
         const { latitude, longitude } = location.coords;
         setPosition([latitude, longitude]);
-        map.setView([latitude, longitude], 13); // move map to user's location
+        map.setView([latitude, longitude], 13); // Move map to user's location
       },
       () => {
         alert("Unable to retrieve your location.");
@@ -30,11 +31,12 @@ const LocationMarker = () => {
 
 const LocationMap = () => {
   return (
-    <MapContainer center={center} zoom={13} className="leaflet-container">
-      {/* OpenStreetMap Tiles */}
+    <MapContainer 
+      center={center} 
+      zoom={13} 
+      className="w-full h-[400px] rounded-lg shadow-md" // ✅ Set a fixed height for Tailwind
+    >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      
-      {/* User Location Marker */}
       <LocationMarker />
     </MapContainer>
   );
