@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css"; // Import Leaflet CSS
+import Footer from "../components/Footer";
 
 // Component to get user's live location and update the map
 const LocationMarker = () => {
@@ -78,12 +79,9 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      {/* Header */}
-      <header className="bg-blue-600 text-white p-4 flex justify-between items-center">
-        <div className="text-xl">EchoGuard</div>
-        <div className="text-lg">Hello, {userName}</div>
-      </header>
+    <div className="min-h-screen flex flex-col bg-pink-100">
+     
+     
 
       {/* Voice Control */}
       <div className="text-center text-sm text-gray-600 mt-2">
@@ -93,20 +91,20 @@ const HomeScreen = () => {
       <div className="flex justify-center space-x-4 mt-4">
         <button
           onClick={startListening}
-          className="py-2 px-4 bg-green-500 text-white rounded"
+          className="py-2 px-4 bg-pink-500/50 text-white rounded-xl"
         >
           🎙 Start Listening
         </button>
         <button
           onClick={stopListening}
-          className="py-2 px-4 bg-gray-500 text-white rounded"
+          className="py-2 px-4 bg-gray-500 text-white rounded-xl"
         >
           ⏹ Stop Listening
         </button>
       </div>
 
       {/* Main Content */}
-      <main className="flex-grow flex flex-col justify-center items-center bg-white">
+      <main className="flex-grow flex flex-col justify-center items-center bg-pink-100">
         {!showMap ? (
           <button
             onClick={() => {
@@ -126,9 +124,11 @@ const HomeScreen = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-blue-600 text-white p-4 text-center">
+      {/* <footer className="bg-blue-600 text-white p-4 text-center">
         <p>EchoGuard - Always listening, always protecting.</p>
-      </footer>
+      </footer> */}
+      <Footer />
+    
     </div>
   );
 };
