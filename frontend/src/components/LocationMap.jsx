@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Default Center: Fallback Location (London)
+// default enter: london
 const defaultCenter = [51.505, -0.09];
 
 const LocationMarker = () => {
@@ -19,7 +19,7 @@ const LocationMarker = () => {
       (location) => {
         const { latitude, longitude } = location.coords;
         setPosition([latitude, longitude]);
-        map.setView([latitude, longitude], 13); // Move the map to user's location
+        map.setView([latitude, longitude], 13); 
       },
       (error) => {
         console.error("Location Error:", error);

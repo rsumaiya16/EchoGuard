@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Bell, Menu, Search } from "lucide-react"; // Icons from Lucide React
-
+import { Bell, Menu, Search } from "lucide-react"; 
 const Header = ({ userName }) => {
   return (
     <header className="fixed top-0 left-0 w-full bg-violet-700 text-white py-3 z-50 shadow-md border-b border-gray-300">
       <div className="container mx-auto flex justify-between items-center px-6">
-        {/* Left Section: Hamburger Menu + Logo */}
+        
         <div className="flex items-center space-x-4">
           <button className="p-2 rounded hover:bg-violet-900/50 transition duration-300">
             <Menu size={24} />
@@ -14,7 +13,7 @@ const Header = ({ userName }) => {
           <Link to="/" className="text-2xl font-bold">EchoGuard</Link>
         </div>
 
-        {/* Center: Search Bar */}
+  
         <div className="flex-1 mx-4">
           <div className="relative">
             <input
@@ -26,7 +25,7 @@ const Header = ({ userName }) => {
           </div>
         </div>
 
-        {/* Right Section: Notifications + User Name */}
+       
         <div className="flex items-center space-x-4">
           <button className="relative p-2 rounded hover:bg-violet-900/50 transition duration-300">
             <Bell size={24} />

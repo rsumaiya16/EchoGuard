@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser, registerUser } from "../api/api"; // ✅ Import both login & register API functions
+import { loginUser, registerUser } from "../api/api"; 
 import Footer from "../components/Footer.jsx";
 import bgVideo from "../assets/loginbg.mp4";
 
@@ -23,9 +23,9 @@ const LoginScreen = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser(formData); // ✅ Call login API
-      console.log("Navigating with name:", response.user.name); // 🔍 Debugging
-      navigate("/home", { state: { name: response.user.name } }); // ✅ Ensure name is passed
+      const response = await loginUser(formData);
+      console.log("Navigating with name:", response.user.name); 
+      navigate("/home", { state: { name: response.user.name } }); 
     } catch (error) {
       setError(error.message || "Login failed. Please try again.");
     }
@@ -35,7 +35,7 @@ const LoginScreen = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await registerUser(formData); // ✅ Call register API
+      const response = await registerUser(formData); 
       navigate("/home", { state: { name: response.name } });
     } catch (error) {
       setError(error.message || "Sign Up failed. Please try again.");

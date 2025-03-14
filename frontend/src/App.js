@@ -6,11 +6,11 @@ import HomeScreen from "./screens/HomeScreen";
 
 const AppLayout = ({ children }) => {
   const location = useLocation();
-  const userName = location.state?.name || "User"; // ✅ Extract name from state
+  const userName = location.state?.name || "User"; 
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* ✅ Pass userName to Header */}
+   
       {location.pathname !== "/" && <Header userName={userName} />}
       <main className="flex-grow">{children}</main>
     </div>
